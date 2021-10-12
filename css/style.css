@@ -1,3 +1,16 @@
+/*--------TO DO LIST-------
+
+- Mobile Menu
+- Contact us
+- About us Cards
+- More style
+- Gallery script(java)
+- More Media query shit
+
+-----------TO DO LIST-------*/
+
+
+
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=ZCOOL+KuaiLe&display=swap');
 *{
     margin: 0;
@@ -36,6 +49,7 @@
     text-decoration: none;
     color: white;
     font-size: 20px;
+    text-transform: uppercase;
 }
 /* Header/navbar slutar här*/
 
