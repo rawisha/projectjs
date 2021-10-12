@@ -93,6 +93,15 @@
 .overlay-text .scrollicon{
     margin-top: 100px;
 }
+
+@media screen and (max-width:800px){
+    .overlay-text h1{
+        font-size: 24px;
+    }
+    .overlay-text p{
+        font-size: 20px;
+    }
+}
 /* welcome sektion slutar här*/
 
 /*------------------------------*/
@@ -101,19 +110,44 @@
 
 /* gallery sektion börjar här*/
 .gallery-wrapper{
+    margin-top: 1px;
     display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-auto-rows: 250px 300px;
+    grid-gap: 5px;
+    grid-auto-flow: dense;
 }
-img{
+.gallery-item{
     width: 100%;
-    vertical-align: middle;
+    height: 100%;
+    position: relative;
+}
+.gallery-item .image{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+.gallery-item .image img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 50%;
+    cursor: pointer;
+    transition: 0.5s ease-in-out;
+}
+.gallery-item:hover .image img{
+    transform: scale(1.1);
+}
+.w-3{
+    grid-column: span 3;
 }
 
-.image{
-    float: left;
-    width: 33.33%;
-}
-
-.image .spanlast{
-    width: 200%;
+@media screen and (max-width:800px){
+    .gallery-wrapper{
+        grid-template-columns: repeat(2,1fr);
+    }
+    .w-3{
+        grid-column: span 2;
+    }
 }
 /* gallery sektion slutar här*/
