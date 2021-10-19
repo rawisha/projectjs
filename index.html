@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Picasso Life</title>
 </head>
 <body>
@@ -31,11 +32,11 @@
             <p>Lively arts to be EXPLORED!</p>
         <div class="scrollicon">
             <a class="scrollto">
-            <a href="#gallery-wrapper"><img src="/media/img/scroll-icon.png"></a>
+            <a href="#gallery-wrapper"><img src="./media/img/scroll-icon.png"></a>
         </div>
         </div>
         <video autoplay="" loop="" muted>
-        	<source src="/media/vid/highway-loop.mp4" type="video/mp4" />
+        	<source src="./media/vid/highway-loop.mp4" type="video/mp4" />
             "Video not supported"
         </video>
     </section>
@@ -115,14 +116,35 @@
                         <p>RANDOM TEXT HERE</p></div>
             </div>
         </div>
-    
+        <!---div för popup bild börjar här---->
+
+        <!---div för popup bild slutar här---->
     </section>
     <!---gallery sektion slutar här---->
-    
-    
+    <div class="popUP">
+        <div class="detailText">
+            <span class="title">
+              Bild <p class="current-img"></p>
+              av <p class="total-img"></p>
+            </span>
+            <span class="icon fa fa-close"></span>
+        </div>
+        <div class="img-box">
+            <div class="slide prev">
+                <i class="fa fa-arrow-left"></i>
+            </div>
+            <div class="slide next">
+                <i class="fa fa-arrow-right"></i>
+            </div>
+            <img src="" alt="">
+        </div>
+    </div>
+    <div class="bgShadow"></div>
     <!--------------------DIVIDER------------------------>
     
     
+
+
     <!---OM OSS sektion börjar här---->
     <section class="aboutUs">
     </section>

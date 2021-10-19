@@ -177,10 +177,7 @@
     object-fit: cover;
     object-position: 50% 50%;
     cursor: pointer;
-    transition: .5s ease-in-out;
-}
-.gallery-item:hover .image img{
-    transform: scale(1.1);
+    
 }
 
 .gallery-item .imgtext em{
@@ -223,6 +220,89 @@
     grid-row: span 2;
 }
 
+/* Pop up box börjar här*/
+.popUP{
+    position: fixed;
+    max-width: 600px;
+    height: auto;
+    width: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.5);
+    background: white;
+    padding: 0 5px 5px 5px;
+    border-radius: 5px;
+    opacity: 0;
+    pointer-events: none;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.4);
+    z-index: 3;
+}
+.popUP.show{
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate(-50%, -50%) scale(1);
+    transition: all 0.5s ease;
+}
+.popUP .detailText{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 15px 12px 10px;
+}
+.popUP .detailText .icon{
+    color: black;
+    cursor: pointer;
+    font-size: 20px
+}
+.detailText .title{
+    display: flex;
+    font-size: 20px;
+    font-weight: 400;
+    color: black;
+}
+.detailText .title p{
+    margin: 0 5px;
+}
+.detailText .title p.current-img{
+    font-weight: 600;
+}
+.popUP .img-box{
+    display: flex;
+    width: 100%;
+}
+.popUP .img-box img{
+    width: 100%;
+}
+.img-box .slide{
+    position: absolute;
+    top: 50%;
+    transform: translateY(50%);
+    font-size: 30px;
+    cursor: pointer;
+    color: #fff;
+    width: 60px;
+    height: 20px;
+    line-height: 50px;
+    text-align: center;
+}
+.img-box .slide.prev{
+    left: 0;
+}
+.img-box .slide.next{
+    right: 0;
+}
+.bgShadow{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: none;
+    background: rgba(0, 0, 0, 0.6);
+}
+/* Pop up box slutar här*/
+
+
 @media screen and (max-width:800px){
     .gallery-wrapper{
         grid-template-columns: repeat(3,1fr);
@@ -238,6 +318,12 @@
     }
     .imgtext{
         bottom: 18px;
+    }
+    
+}
+@media screen and (max-width:1500px){
+    .popUP{
+        max-width: 500px;
     }
 }
 /* gallery sektion slutar här*/
