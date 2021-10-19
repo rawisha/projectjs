@@ -1,24 +1,24 @@
 // Popup image kod börjar här
 const gallery = document.querySelectorAll(".gallery-item .image"), // här konstaterar vi klasserna
 popUp = document.querySelector(".popUP"), // här sätter vi klassen till popUp
-previewImg = popUp.querySelector("img"), // här hämtar vi bilderna från popup klassen
+previewImg = popUp.querySelector("img[alt]"), // här hämtar vi bilderna från popup klassen
 currentImg = popUp.querySelector(".current-img"), // här hämtar vi klassen current img från popup
 totalImg = popUp.querySelector(".total-img"),
 bgShadow = document.querySelector(".bgShadow"), // här hämtar vi bgshadow klassen som är utanför popUP diven
 closeIcon = popUp.querySelector(".icon");
 
 window.onload = ()=>{ // här targetar vi window där all dom sitter
-    for(let i = 0; i < gallery.length; i++){ // här räknar vi hur många bilder som finns i galleryn
-        totalImg.textContent = gallery.length; // här sätter vi i till total img och sätter det i text fältet med textContent
+    for(let i = 0; i < gallery.length; i++){ // här räknar vi hur många bilder som finns i galleryn, om mindre än i(0) så plusar vi på med 1
+        totalImg.textContent = gallery.length; // här sätter vi "i" till total img och sätter det i text fältet med textContent
         let bilder = i; // här sätter vi en början/index som kallas för bilder och kopplar det till i där i börjar på 0
         let klickbilder; // här kosntaterar vi en variabel som heter klickbilder
-        gallery[i].onclick = ()=>{ // här sätter vi igång en onlick event på gallery
+        gallery[i].onclick = ()=>{ // här sätter vi igång en onlick event på gallery med en funtion som körs nedanför
             
             klickbilder = bilder; // här sätter vi bilderna som klickas igenom att 
             console.log(i)
             function preview(){
                 currentImg.textContent = bilder + 1; // eftersom biderna räknas från 0 så plusar vi på med 1 så det blir 1 av antal bilder
-                let activeimg = gallery[bilder].querySelector("img").src; // här hämtar vi in src till bilderna som klickas
+                let activeimg = gallery[bilder].querySelector("img").alt; // här hämtar vi in alt attributet till bilderna som klickas
                 previewImg.src = activeimg; // här skickar vi in bildernas src/länk som klickades på till previewimg
                 
             }
