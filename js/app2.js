@@ -53,7 +53,7 @@ window.onload = ()=>{ // här targetar vi window där all dom sitter
             console.log(i)
             function preview(){
                 currentImg.textContent = bilder + 1; // eftersom biderna räknas från 0 så plusar vi på med 1 så det blir 1 av antal bilder
-                let activeimg = gallery[bilder].querySelector("img").alt; // här hämtar vi in alt attributet till bilderna som klickas
+                let activeimg = gallery[bilder].querySelector("img").src; // här hämtar vi in alt attributet till bilderna som klickas
                 previewImg.src = activeimg; // här skickar vi in bildernas src/länk som klickades på till previewimg
                 
             }

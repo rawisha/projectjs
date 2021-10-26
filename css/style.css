@@ -1,6 +1,4 @@
 /*--------TO DO LIST-------
-
-- Mobile Menu
 - Contact us
 - About us Cards
 - More style
@@ -23,6 +21,9 @@
 /*------------------------------*/
 /* Header/navbar börjar här*/
 .navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     height: 80px;
     width: 100%;
     background-color: rgba(250,250,250,0.2);
@@ -42,6 +43,11 @@
     font-weight: 500;
     font-size: 30px;
     font-family: 'ZCOOL KuaiLe';
+}
+.navbar a:hover{
+    color: red;
+    transform: scale(1.1);
+    transition: .4s;
 }
 .navbar a span{
     color: red;
@@ -71,10 +77,92 @@
     font-size: 20px;
     text-transform: uppercase;
 }
+.menu-btn{
+    display: none;
+}
+.mobile-menu{
+    display: none;
+}
 /* Header/navbar slutar här*/
 @media screen and (max-width:800px) {
     .navbar a, .navbar a span{
-        font-size: 25px;
+        font-size: 30px;
+    }
+    .navbar ul{
+        display: none;
+    }
+    .menu-btn {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 70px;
+        height: 70px;
+        cursor: pointer;
+        z-index:1;
+    }
+    .menu-btn-burger {
+        width: 40px;
+        height: 4px;
+        background-color: red;
+        transition: 0.5s;
+    }
+    .menu-btn-burger::before,
+    .menu-btn-burger::after {
+        content: "";
+        position: absolute;
+        width: 40px;
+        height: 4px;
+        background-color: white;
+        transition: 0.5s;
+    }
+    .menu-btn-burger::before {
+        transform: translateY(-10px);
+    }
+    .menu-btn-burger::after {
+        transform: translateY(10px);
+    }
+    .menu-btn.open .menu-btn-burger{
+        transform: rotate(180deg);
+        background-color: transparent;
+    }
+    .menu-btn.open .menu-btn-burger::before{
+        transform: rotate(45deg);
+        
+    }
+    .menu-btn.open .menu-btn-burger::after{
+        transform: rotate(-45deg);
+        background-color: red;
+    }
+    .mobile-menu{
+        display: block;
+        min-height: 100vh;
+        width: 100%;
+        padding-top: 15vh;
+        background-color: black;
+        position: fixed;
+        right: -100%;
+        z-index: 2;
+        transition: 0.5s;
+    }
+    .mobile-navbar{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    .mobile-link{
+        width: 100%;
+        padding: 30px;
+        border: 0;
+        color: white;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 1.3em;
+        text-align: center;
+        text-decoration: none;
+        text-transform: uppercase; 
+    }
+    .mobile-link:hover{
+        color: red;
     }
 }
 /*------------------------------*/
@@ -137,9 +225,13 @@
 @media screen and (max-width:800px){
     .overlay-text h1{
         font-size: 24px;
+        
     }
     .overlay-text p{
         font-size: 20px;
+    }
+    .overlay-text{
+        z-index: 1;
     }
 }
 /* welcome sektion slutar här*/
@@ -272,10 +364,11 @@
 }
 .popUP .img-box img{
     width: 100%;
+    height: 500px;
 }
 .img-box .slide{
     position: absolute;
-    top: 50%;
+    top: 40%;
     transform: translateY(50%);
     font-size: 30px;
     cursor: pointer;
@@ -299,6 +392,27 @@
     width: 100%;
     display: none;
     background: rgba(0, 0, 0, 0.6);
+}
+.demoimg{
+    position: relative;
+    display: inline-flex;
+    justify-content: center;
+    overflow: hidden;
+    width: auto;
+    height: auto;
+    margin-top: 5px;
+    
+}
+
+.demoimg img{
+    display: flex;
+    object-fit: cover;
+    width: 100%;
+    height: 200px;
+    padding-right: 5px;
+    overflow: hidden;
+    opacity: .6;
+    
 }
 /* Pop up box slutar här*/
 
