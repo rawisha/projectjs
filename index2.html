@@ -22,12 +22,10 @@
             </ul>
             <!--mobile navigation button start-->
             <div class="menu-btn">
-            <div class="menu-btn-burger"></div>
+                <div class="menu-btn-burger"></div>
             </div>
             <!--mobile navigation button end-->
         </nav>
-        
-
     </header>
     <!--header end-->
 
@@ -51,11 +49,6 @@
                 <h1><span>Funky</span> art gallery</h1>
                 <p>Lively arts to be EXPLORED!</p>
             </div>
-            <div class ="landing-btn-wrapper">
-                <button id="landing-btn"><i  class="fas fa-moon"></i></button>
-                <!--<button class="landing-btn" onClick="nightMode()"><i  class="fas fa-moon"></i></button>-->
-                <p>Mörkt läge</p>
-            </div>
         </section>
         <!--landing section end-->
 
@@ -73,7 +66,7 @@
                         ducimus, quam ipsam tenetur reprehenderit libero distinctio 
                         amet praesentium atque quia reiciendis, asperiores hic!</p>
                     <div class="we-are-open col-10">
-                        <div id="js-open">We´re open now!</div>
+                        <div id="js-open">Hey, we´re open!</div>
                         <table>
                             <tr>
                                 <td>Monday</td>
@@ -319,7 +312,10 @@
                 <div class="slide next">
                     <i class="fa fa-arrow-right"></i>
                 </div>
-                <img src="" alt="">
+                <img src="" alt="" id="main-img">
+            </div>
+            <div class="demoimg">
+                
             </div>
         </div>
         <div class="bgShadow"></div>
@@ -334,22 +330,45 @@
             <div class="card-wrapper col-8">
                 <div class="card col-3">
                     <img src="./media/img2/profile-lyon.jpg">
-                    <h3>Text</h3>
-                    <button>Läs mer</button>
+                    <h3>[ Text ]</h3>
+                    <button id="about-btn-0">More info <i class="fas fa-chevron-right"></i></button>
                 </div>
                 <div class="card col-3">
                     <img src="./media/img2/profile-cat.jpg">
                     <h3>The boss</h3>
-                    <button>Läs mer</button>
+                    <button id="about-btn-1">More info <i class="fas fa-chevron-right"></i></button>
                 </div>
                 <div class="card col-3">
                     <img src="./media/img2/profile-tiger.jpg">
-                    <h3>Text</h3>
-                    <button>Läs mer</button>
+                    <h3>[ Text ]</h3>
+                    <button id="about-btn-2">More info <i class="fas fa-chevron-right"></i></button>
                 </div>
             </div>                
         </section> 
         <!--about section end-->
+
+        <!--about modal start-->
+        <div id="aboutModal" class="aboutModal">
+            <div class="modal-wrapper">
+            <div class="modal-header">
+                <span class="closingIcon fa fa-close"></span>
+            </div>
+            <div class="modal-content">
+                <div class="img-box col-6">
+                    <img id="profile-img" src="https://via.placeholder.com/150">
+                </div>
+                <div class="text-box col-6">
+                    <h2 id="position"></h2>
+                    <p>Name: <span id="name"></span></p>
+                    <p>Age: <span id="age"></span></p>
+                    <p>Facts: <span id="fact"></span></p>
+                    <p>Contact: <span id="contact"></span></p>
+                </div>
+            </div>
+            </div>
+        </div>
+        <!--about modal end-->
+
 
     </main>
     <!--main end-->
