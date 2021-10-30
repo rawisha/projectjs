@@ -19,13 +19,12 @@ function toggleMenu() {
   }
 }
 
-//ERROR RAD 27 - Cannot read properties of undefined (reading 'addEventListener)
-//Detta fel är även på Christians kod. Hur lösa? Fråga C?
+
 window.addEventListener("load", function () {
   menuBtn.addEventListener("click", function () {
     toggleMenu();
   });
-  for (let i = 0; links.length; i++) {
+  for (let i = 0; i < links.length; i++) {
     links[i].addEventListener("click", function () {
       toggleMenu();
     });
@@ -123,12 +122,25 @@ window.onload = () => {
 /*
       ****  TO DO  ****
       Gör så att bilderna renderas ut i inforutan också (nu endast tillfälliga "fasta" placeholders")
+      Lägga till profile img id i staff sedan rendera ut det med hjälp av for loopen som är skapad
 
 */ 
 
 
 //get the modal
 const modal = document.querySelector("#aboutModal");
+
+// get the profile images
+/*
+
+Få ut bilderna här sedan appenda med " <img id="profile-img" src="https://via.placeholder.com/150"> <<----", 
+
+
+const getimg = document.querySelector(".col-3")
+const prof = document.querySelector("#profile-img[src]")
+const perimg = getimg.querySelector("img[src]")
+
+*/
 
 //get the buttons for opening the modal
 const btn0 = document.querySelector("#about-btn-0");
@@ -139,21 +151,20 @@ const btn2 = document.querySelector("#about-btn-2");
 const closingIcon = document.querySelector(".closingIcon");
 
 const staff = [
-    { position: "Staff 0", name: "[Name 0]", age: "[Age 0]", fact: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste, inventore possimus dicta sed earum reprehenderit eligendi perferendis quos incidunt atque mollitia.", contact: "[name0]@funky.com" },
     { position: "Staff 1", name: "[Name 1]", age: "[Age 1]", fact: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste, inventore possimus dicta sed earum reprehenderit eligendi perferendis quos incidunt atque mollitia.", contact: "[name1]@funky.com" },
     { position: "Staff 2", name: "[Name 2]", age: "[Age 2]", fact: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste, inventore possimus dicta sed earum reprehenderit eligendi perferendis quos incidunt atque mollitia.", contact: "[name2]@funky.com" },
+    { position: "Staff 3", name: "[Name 3]", age: "[Age 3]", fact: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste, inventore possimus dicta sed earum reprehenderit eligendi perferendis quos incidunt atque mollitia.", contact: "[name3]@funky.com" },
 ]
+
+
 
 //the function for printing out information
 function showStaff(valueOne) {
-    const num = valueOne;
-    document.querySelector("#position").innerHTML = staff[num].position;
-    document.querySelector("#name").innerHTML = staff[num].name;
-    document.querySelector("#age").innerHTML = staff[num].age;
-    document.querySelector("#fact").innerHTML = staff[num].fact;
-    document.querySelector("#contact").innerHTML = staff[num].contact;
+    for(const i in staff[valueOne]) {
+      document.querySelector("#"+i).innerHTML = staff[valueOne][i];
+      }
 }
-
+  
 //when clicking the read more button
 btn0.onclick = () => {
     //show the modal
