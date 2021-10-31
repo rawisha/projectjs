@@ -595,10 +595,10 @@
     flex-wrap: wrap;
     margin-bottom: 20px;
 }
-.img-box {
+.img-b {
     padding: 20px;
 }
-.img-box img {
+.img-b img {
     width: 100%;
     object-fit: contain;
 }

@@ -5,7 +5,7 @@ const menu = document.querySelector(".mobile-menu");
 const links = document.getElementsByClassName("mobile-link");
 const documentBody = document.body;
 
-function toggleMenu() {
+toggleMenu = () => {
   if (!menuOpen) {
     menuBtn.classList.add("open");
     menuOpen = true;
@@ -18,7 +18,6 @@ function toggleMenu() {
     documentBody.style.overflow = "auto";
   }
 }
-
 
 window.addEventListener("load", function () {
   menuBtn.addEventListener("click", function () {
@@ -134,12 +133,12 @@ const modal = document.querySelector("#aboutModal");
 /*
 
 Få ut bilderna här sedan appenda med " <img id="profile-img" src="https://via.placeholder.com/150"> <<----", 
+*/
 
-
-const getimg = document.querySelector(".col-3")
+/*
+const getimg = document.querySelector(".card")
 const prof = document.querySelector("#profile-img[src]")
 const perimg = getimg.querySelector("img[src]")
-
 */
 
 //get the buttons for opening the modal
@@ -156,13 +155,19 @@ const staff = [
     { position: "Staff 3", name: "[Name 3]", age: "[Age 3]", fact: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste, inventore possimus dicta sed earum reprehenderit eligendi perferendis quos incidunt atque mollitia.", contact: "[name3]@funky.com" },
 ]
 
-
-
-//the function for printing out information
+//CHANGE TO ARROW FUNCTION????
+/*
 function showStaff(valueOne) {
     for(const i in staff[valueOne]) {
       document.querySelector("#"+i).innerHTML = staff[valueOne][i];
       }
+}*/
+
+//the function for printing out information
+showStaff = (valueOne) => {
+  for(const i in staff[valueOne]) {
+    document.querySelector("#"+i).innerHTML = staff[valueOne][i];
+    }
 }
   
 //when clicking the read more button
