@@ -45,7 +45,7 @@ window.onload = () => {
   for (let i = 0; i < gallery.length; i++) {
     totalImg.textContent = gallery.length;
 
-    let thumbs = [gallery[i].querySelector("img").alt];
+    let thumbs = [gallery[i].querySelector("img").src];
     thumbs.forEach((pics) => {
       const thum = document.createElement("img");
       thum.setAttribute("class", "thumbinfo");
@@ -55,7 +55,7 @@ window.onload = () => {
     gallery[i].onclick = () => {
       function preview() {
         currentImg.textContent = i + 1;
-        let activeimg = gallery[i].querySelector("img").alt;
+        let activeimg = gallery[i].querySelector("img").src;
         previewImg.src = activeimg;
         const thumbimgs = document.getElementsByClassName("thumbinfo");
         const mainIMGsrc = document.getElementById("main-img").src;
