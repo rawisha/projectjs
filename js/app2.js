@@ -1,4 +1,4 @@
-//mobile menu
+//MOBILE MENU START
 let menuOpen = false;
 const menuBtn = document.querySelector(".menu-btn");
 const menu = document.querySelector(".mobile-menu");
@@ -29,9 +29,43 @@ window.addEventListener("load", function () {
     });
   }
 });
+//MOBILE MENU END
 
+//OPEN SIGN START
+window.addEventListener("load", function () {
+  const time = new Date();
+  let getTime = time.getHours();
+  const date = new Date();
+  let getDay = date.getDate();
 
-// Popup image kod börjar här
+  //for testing different times, that´s why using let
+  //getTime = 9;
+  //getDay = ;
+  
+  //if = opening times for weekdays
+  if (getDay >= 1 && getDay <= 5){
+    //opening times
+    if (getTime >= 10 && getTime <= 17){
+      document.querySelector("#js-open").innerHTML = "Hey, We´re open!";
+    //closed
+    } else {
+      document.querySelector("#js-open").innerHTML = "Sorry, we´re closed now";
+    }
+  //else = opening times for weekend
+  } else {
+    //opening times
+    if (getTime >= 12 && getTime <= 15){
+      document.querySelector("#js-open").innerHTML = "Hey, We´re open!";
+    //closed
+    } else {
+      document.querySelector("#js-open").innerHTML = "Sorry, we´re closed now";
+    }
+  }
+  console.log(getTime);
+});
+//OPEN SIGN END
+
+//POPUP GALLERY START
 const gallery = document.querySelectorAll(".gallery-item .image"),
   popUp = document.querySelector(".popUP"),
   previewImg = popUp.querySelector("img[alt]"),
@@ -114,10 +148,9 @@ window.onload = () => {
     };
   }
 };
-// Popup image kod slutar här
+//POPUP GALLERY END
 
 //ABOUT MODAL START
-
 /*
       ****  TO DO  ****
       Gör så att bilderna renderas ut i inforutan också (nu endast tillfälliga "fasta" placeholders")
@@ -154,14 +187,6 @@ const staff = [
     { position: "Staff 2", name: "[Name 2]", age: "[Age 2]", fact: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste, inventore possimus dicta sed earum reprehenderit eligendi perferendis quos incidunt atque mollitia.", contact: "[name2]@funky.com" },
     { position: "Staff 3", name: "[Name 3]", age: "[Age 3]", fact: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste, inventore possimus dicta sed earum reprehenderit eligendi perferendis quos incidunt atque mollitia.", contact: "[name3]@funky.com" },
 ]
-
-//CHANGE TO ARROW FUNCTION????
-/*
-function showStaff(valueOne) {
-    for(const i in staff[valueOne]) {
-      document.querySelector("#"+i).innerHTML = staff[valueOne][i];
-      }
-}*/
 
 //the function for printing out information
 showStaff = (valueOne) => {
