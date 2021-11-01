@@ -61,7 +61,7 @@ window.addEventListener("load", function () {
       document.querySelector("#js-open").innerHTML = "Sorry, we´re closed now";
     }
   }
-  console.log(getTime);
+  
 });
 //OPEN SIGN END
 
@@ -153,8 +153,7 @@ window.onload = () => {
 //ABOUT MODAL START
 /*
       ****  TO DO  ****
-      Gör så att bilderna renderas ut i inforutan också (nu endast tillfälliga "fasta" placeholders")
-      Lägga till profile img id i staff sedan rendera ut det med hjälp av for loopen som är skapad
+      STYLA PÅ FYFAAAAANN
 
 */ 
 
@@ -163,16 +162,14 @@ window.onload = () => {
 const modal = document.querySelector("#aboutModal");
 
 // get the profile images
-/*
 
-Få ut bilderna här sedan appenda med " <img id="profile-img" src="https://via.placeholder.com/150"> <<----", 
-*/
+const getimg = document.querySelectorAll(".profile-img")
+const profileimg = document.querySelector("#profImg")
 
-/*
-const getimg = document.querySelector(".card")
-const prof = document.querySelector("#profile-img[src]")
-const perimg = getimg.querySelector("img[src]")
-*/
+getimg.forEach(pics =>{
+  const imgsrc = pics.getAttribute("src")
+})
+
 
 //get the buttons for opening the modal
 const btn0 = document.querySelector("#about-btn-0");
@@ -183,16 +180,35 @@ const btn2 = document.querySelector("#about-btn-2");
 const closingIcon = document.querySelector(".closingIcon");
 
 const staff = [
-    { position: "Staff 1", name: "[Name 1]", age: "[Age 1]", fact: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste, inventore possimus dicta sed earum reprehenderit eligendi perferendis quos incidunt atque mollitia.", contact: "[name1]@funky.com" },
-    { position: "Staff 2", name: "[Name 2]", age: "[Age 2]", fact: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste, inventore possimus dicta sed earum reprehenderit eligendi perferendis quos incidunt atque mollitia.", contact: "[name2]@funky.com" },
-    { position: "Staff 3", name: "[Name 3]", age: "[Age 3]", fact: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste, inventore possimus dicta sed earum reprehenderit eligendi perferendis quos incidunt atque mollitia.", contact: "[name3]@funky.com" },
-]
+  {
+    position: "Staff 1",
+    name: "[Name 1]",
+    age: "[Age 1]",
+    fact: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste, inventore possimus dicta sed earum reprehenderit eligendi perferendis quos incidunt atque mollitia.",
+    contact: "[name1]@funky.com",
+  },
+  {
+    position: "Staff 2",
+    name: "[Name 2]",
+    age: "[Age 2]",
+    fact: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste, inventore possimus dicta sed earum reprehenderit eligendi perferendis quos incidunt atque mollitia.",
+    contact: "[name2]@funky.com",
+  },
+  {
+    position: "Staff 3",
+    name: "[Name 3]",
+    age: "[Age 3]",
+    fact: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste, inventore possimus dicta sed earum reprehenderit eligendi perferendis quos incidunt atque mollitia.",
+    contact: "[name3]@funky.com",
+  },
+];
 
 //the function for printing out information
 showStaff = (valueOne) => {
   for(const i in staff[valueOne]) {
     document.querySelector("#"+i).innerHTML = staff[valueOne][i];
     }
+    profileimg.src = getimg[valueOne].src
 }
   
 //when clicking the read more button
@@ -221,6 +237,3 @@ closingIcon.onclick = () => {
   documentBody.style.overflow = "auto";
 }
 //ABOUT MODAL END
-
-
-
