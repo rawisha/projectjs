@@ -5,7 +5,7 @@ const menu = document.querySelector(".mobile-menu");
 const links = document.getElementsByClassName("mobile-link");
 const documentBody = document.body;
 
-toggleMenu = () => {
+const toggleMenu = () => {
   if (!menuOpen) {
     menuBtn.classList.add("open");
     menuOpen = true;
@@ -32,15 +32,15 @@ window.addEventListener("load", function () {
 //MOBILE MENU END
 
 //OPEN SIGN START
-window.addEventListener("load", function () {
+const openSign = () => {
   const time = new Date();
   let getTime = time.getHours();
   const date = new Date();
   let getDay = date.getDate();
 
   //for testing different times, that´s why using let
-  //getTime = 9;
-  //getDay = ;
+  //getTime = 12;
+  //getDay = 0;
   
   //if = opening times for weekdays
   if (getDay >= 1 && getDay <= 5){
@@ -61,8 +61,9 @@ window.addEventListener("load", function () {
       document.querySelector("#js-open").innerHTML = "Sorry, we´re closed now";
     }
   }
-  
-});
+}
+
+window.addEventListener("load", openSign);
 //OPEN SIGN END
 
 //POPUP GALLERY START
@@ -160,25 +161,17 @@ window.onload = () => {
 
 //get the modal
 const modal = document.querySelector("#aboutModal");
-
-// get the profile images
-
+//get all the profile images in the class
 const getimg = document.querySelectorAll(".profile-img")
+//get the picture container
 const profileimg = document.querySelector("#profImg")
 
 getimg.forEach(pics =>{
   const imgsrc = pics.getAttribute("src")
 })
+//MEN NÄR ANVÄNDS DENNA IMGSRC SEDAN??????????????? BEHÖVS DEN ENS???
 
-
-//get the buttons for opening the modal
-const btn0 = document.querySelector("#about-btn-0");
-const btn1 = document.querySelector("#about-btn-1");
-const btn2 = document.querySelector("#about-btn-2");
-
-//get the closing-icon
-const closingIcon = document.querySelector(".closingIcon");
-
+//staffinfo as objects in an array
 const staff = [
   {
     position: "Staff 1",
@@ -203,37 +196,35 @@ const staff = [
   },
 ];
 
-//the function for printing out information
-showStaff = (valueOne) => {
+//the function for printing out information, with the sent index from openAboutModal as a parameter
+const showStaff = (valueOne) => {
   for(const i in staff[valueOne]) {
     document.querySelector("#"+i).innerHTML = staff[valueOne][i];
     }
     profileimg.src = getimg[valueOne].src
 }
-  
-//when clicking the read more button
-btn0.onclick = () => {
-    //show the modal
-    modal.style.display = "block";
-    //body = no scroll
-    documentBody.style.overflow = "hidden";
-    //call the function with a parameter for indexposition
-    showStaff(0); 
-}
-btn1.onclick = () => {
-    modal.style.display = "block";
-    documentBody.style.overflow = "hidden";
-    showStaff(1);
-}
-btn2.onclick = () => {
-    modal.style.display = "block";
-    documentBody.style.overflow = "hidden";
-    showStaff(2);
-}
 
- //when clicking the closing icon, the modal close, body scrolls
-closingIcon.onclick = () => { 
-  modal.style.display = "none"; 
-  documentBody.style.overflow = "auto";
-}
+//function for opening the about modal
+const openAboutModal = () => {
+  //get the buttons in the about cards, every button with the classname are collected in an array
+  const btn = document.querySelectorAll(".about-btn");
+  //iterate over every index in the button array
+  for (let i = 0; i < btn.length; i++) {
+    //listen for clicks on the buttons
+    btn[i].addEventListener("click", () => {
+      //when clicking, the modal shows up
+      modal.style.display = "block";
+      //start listening for clicks on the closing button
+      document.querySelector(".closingIcon").addEventListener("click", () => {
+        //when clicking closing button, the modal goes hidden
+        modal.style.display = "none";
+      }); 
+      //call the showStaff function with the clicked index position as a parameter
+      showStaff([i]);
+    });
+  }
+};
+
+//when the window load, call the openAboutModal function
+window.addEventListener("load", openAboutModal);
 //ABOUT MODAL END
