@@ -152,43 +152,30 @@ window.onload = () => {
 //POPUP GALLERY END
 
 //ABOUT MODAL START
-/*
-      ****  TO DO  ****
-      STYLA PÅ FYFAAAAANN
-
-*/ 
-
-
 //get the modal
 const modal = document.querySelector("#aboutModal");
 //get all the profile images in the class
 const getimg = document.querySelectorAll(".profile-img")
 //get the picture container
 const profileimg = document.querySelector("#profImg")
-
-getimg.forEach(pics =>{
-  const imgsrc = pics.getAttribute("src")
-})
-//MEN NÄR ANVÄNDS DENNA IMGSRC SEDAN??????????????? BEHÖVS DEN ENS???
-
 //staffinfo as objects in an array
 const staff = [
   {
-    position: "Staff 1",
+    position: "Photografer",
     name: "[Name 1]",
     age: "[Age 1]",
     fact: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste, inventore possimus dicta sed earum reprehenderit eligendi perferendis quos incidunt atque mollitia.",
     contact: "[name1]@funky.com",
   },
   {
-    position: "Staff 2",
+    position: "Photographer",
     name: "[Name 2]",
     age: "[Age 2]",
     fact: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste, inventore possimus dicta sed earum reprehenderit eligendi perferendis quos incidunt atque mollitia.",
     contact: "[name2]@funky.com",
   },
   {
-    position: "Staff 3",
+    position: "Photographer",
     name: "[Name 3]",
     age: "[Age 3]",
     fact: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste, inventore possimus dicta sed earum reprehenderit eligendi perferendis quos incidunt atque mollitia.",
@@ -198,9 +185,12 @@ const staff = [
 
 //the function for printing out information, with the sent index from openAboutModal as a parameter
 const showStaff = (valueOne) => {
-  for(const i in staff[valueOne]) {
-    document.querySelector("#"+i).innerHTML = staff[valueOne][i];
+  //for every infoType in the staff const at the sent in index
+  for(const infoType in staff[valueOne]) {
+    //print out at right position in html with # + infotype. The info that should be printet out comes from const staff[inparameter index][infotype]
+    document.querySelector("#"+infoType).innerHTML = staff[valueOne][infoType];
     }
+    //for printing out images. the profileimg.src (=the place in html) should be the getimg[inparameter index].src (from the picture array, selected by class earlier)
     profileimg.src = getimg[valueOne].src
 }
 
@@ -214,16 +204,17 @@ const openAboutModal = () => {
     btn[i].addEventListener("click", () => {
       //when clicking, the modal shows up
       modal.style.display = "block";
-      //start listening for clicks on the closing button
-      document.querySelector(".closingIcon").addEventListener("click", () => {
-        //when clicking closing button, the modal goes hidden
-        modal.style.display = "none";
-      }); 
       //call the showStaff function with the clicked index position as a parameter
       showStaff([i]);
     });
   }
 };
+
+//function for closing the about modal - starts with an onclick in the html-doc
+const closeAboutModal = () => {
+  //hide the modal-div
+  modal.style.display = "none";
+}
 
 //when the window load, call the openAboutModal function
 window.addEventListener("load", openAboutModal);
