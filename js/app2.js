@@ -35,13 +35,13 @@ window.addEventListener("load", function () {
 const openSign = () => {
   const time = new Date();
   let getTime = time.getHours();
-  const date = new Date();
-  let getDay = date.getDate();
+  const day = new Date();
+  let getDay = day.getDay();
 
   //for testing different times, that´s why using let
   //getTime = 12;
   //getDay = 0;
-  
+
   //if = opening times for weekdays
   if (getDay >= 1 && getDay <= 5){
     //opening times
@@ -60,11 +60,160 @@ const openSign = () => {
     } else {
       document.querySelector("#js-open").innerHTML = "Sorry, we´re closed now";
     }
-  }
-}
+  };
+};
 
 window.addEventListener("load", openSign);
 //OPEN SIGN END
+
+/*BACKUP GALLERY */
+/*
+ OpenGalleryModal   - lyssnar på bildklick
+                    - öppnar modalen vid klick
+                    - kallar på setShowingImage med klickad img.scr som argument
+                    - kallar på setThumbs för att printa ut thumbnailsen
+                    - läser också in knapparna och kallar på rätt knappfunktion vid klick
+
+  setActiveThumbnail justerar stylingen för aktiv bild
+*/
+
+const gallery = document.querySelector("#galleryModal");
+const showingplace = document.querySelector("#showing-image");
+const images2 = document.querySelectorAll(".gallery-image");
+const images = [//våra bilder hårdkodade filnamn som objekt i array
+  {
+    imgName: "5-3.jpg"
+  },
+  {
+    imgName: "5-1.jpg"
+  },
+  {
+    imgName: "5-6.jpg"
+  },
+  {
+    imgName: "5-2.jpg"
+  },
+  {
+    imgName: "5-5.jpg"
+  },
+  {
+    imgName: "5-4.jpg"
+  },
+  {
+    imgName: "5-7.jpg"
+  },
+];
+
+
+
+/********************  TO DO GALLERY !!!!!!! **********************/
+
+ /*   - I setThumbs vill jag att den läser i images2 som är inläst istället för hårdkodade, 
+        känns lite b att ha två olika arrays med samma bilder ;) 
+      - Finlir på next/prev knappar och justera så de går varvet runt igen när första/sista bilden klickas
+        Fixa då också kommentarerna på dessa funktioner
+*/
+
+/********************************************************/
+
+//function for opening the about modal
+const openGalleryModal = () => {
+  //get the images in the gallery, every image with the classname are collected in an array
+  const selImg = document.querySelectorAll(".gallery-image");
+  //iterate over every index in the img array
+  for (let i = 0; i < selImg.length; i++) {
+    //listen for clicks on the images
+    selImg[i].addEventListener("click", () => {
+      //when clicking, the modal shows up
+      gallery.style.display = "flex";
+      //call the functions that shows the gallery modal content with the clicked index position as a parameter
+      setShowingImage(selImg[i].src);
+      //call the thumbnail function
+      setThumbs();
+    });
+  };
+  //get the buttons and listen for clicks, click = calling a function
+  document.querySelector("#prev-btn").addEventListener("click", prevImage);
+  document.querySelector("#next-btn").addEventListener("click", nextImage);
+};
+
+//function for closing the modal
+const closeGalleryModal = () => {
+  //hide the modal-div
+  gallery.style.display = "none";
+};
+
+//the parameter src is sent from the onclick in previous function (openGalleryModal or setThumbs)
+const setShowingImage = (src) => {
+  //the img element in the showingplace get the src that has been sent in to the function
+  showingplace.setAttribute("src", src);
+  //get the new active thumbnail
+  setActiveThumbnail();
+};
+
+//function for the thumbnails
+const setThumbs = () => {
+  document.querySelector("#thumbnails-wrapper").innerHTML = images
+  //map = take the "in-array", add something, ang get a new array
+  .map((img) => `<img src="./media/img2/${img.imgName}" class="thumbnail" onclick="setShowingImage(this.src)">`)
+  //takes the array and put it back to a string without the ,
+  .join("");
+  //get the new active thumbnail
+  setActiveThumbnail();
+}
+
+//function for the active thumbnail
+const setActiveThumbnail = () => {
+  //get the thumbnail images, every image with the classname are collected in an array
+  const thumbs = document.querySelectorAll(".thumbnail");
+  //loop for checking of the src of the element is the same as the showingplace src = the active one
+  for (let i = 0; i < thumbs.length; i++) {
+    //if the img in thumbs[i] src attribute is the same as the showingplace src attribut
+    if (thumbs[i].src === showingplace.src){ 
+      //style without opacity
+      thumbs[i].style.opacity = "1";
+    } else {
+      //style with opacity
+      thumbs[i].style.opacity = "0.8";
+    }  
+  }
+};
+
+//function for previous picture btn
+const prevImage = () => {
+  //get the thumbnail images, every image with the classname are collected in an array
+  const thumbs = document.querySelectorAll(".thumbnail");
+  //loopa över för att se om aktiv thumbs och main är samma
+  for (let i = 0; i < thumbs.length; i++) {
+    //om bilden på thumbs[i] src attribut === main-image src attribut & i !== 0 (alltså ej den första bilden)
+    if (thumbs[i].src === showingplace.src && i !== 0){ 
+      //då vill vi sätta om vår main-image attribut ("src" till, thumbs[i-1].src) = alltså bilden innan
+      showingplace.setAttribute("src", thumbs[i-=1].src);
+      //get the new active thumbnail
+      setActiveThumbnail();
+    };
+  };
+};
+
+//function for next picture "btn"
+const nextImage = () => {
+  //get the thumbnailimages, every image with the classname are collected in an array
+  const thumbs = document.querySelectorAll(".thumbnail");
+  //loopa över för att se om aktiv thumbs och main är samma
+  for (let i = 0; i < thumbs.length; i++) {
+    //om bilden på thumbs[i] src attribut === main-image src attribut & i !== 0 (alltså den sista bilden)
+    if (thumbs[i].src === showingplace.src && i !== thumbs.length - 1) { 
+      //då vill vi sätta om vår main-image attribut ("src" till, thumbs[i+=1].src) = alltså bilden efter
+      showingplace.setAttribute("src", thumbs[i+=1].src);
+      //get the new active thumbnail
+      setActiveThumbnail();
+    };
+  };
+};
+
+//when the window load, call the openGalleryModal function
+window.addEventListener("load", openGalleryModal);
+
 
 /*
 //POPUP GALLERY START
@@ -157,9 +306,9 @@ window.onload = () => {
 //get the modal
 const modal = document.querySelector("#aboutModal");
 //get all the profile images in the class
-const getimg = document.querySelectorAll(".profile-img")
+const getimg = document.querySelectorAll(".profile-img");
 //get the picture container
-const profileimg = document.querySelector("#profImg")
+const profileimg = document.querySelector("#profImg");
 //staffinfo as objects in an array
 const staff = [
   {
@@ -193,7 +342,7 @@ const showStaff = (valueOne) => {
     document.querySelector("#"+infoType).innerHTML = staff[valueOne][infoType];
     }
     //for printing out images. the profileimg.src (=the place in html) should be the getimg[inparameter index].src (from the picture array, selected by class earlier)
-    profileimg.src = getimg[valueOne].src
+    profileimg.src = getimg[valueOne].src;
 }
 
 //function for opening the about modal
@@ -209,7 +358,7 @@ const openAboutModal = () => {
       //call the showStaff function with the clicked index position as a parameter
       showStaff([i]);
     });
-  }
+  };
 };
 
 //function for closing the about modal - starts with an onclick in the html-doc
@@ -221,149 +370,3 @@ const closeAboutModal = () => {
 //when the window load, call the openAboutModal function
 window.addEventListener("load", openAboutModal);
 //ABOUT MODAL END
-
-
-/*BACKUP GALLERY */
-/*
- OpenGalleryModal   - lyssnar på bildklick
-                    - öppnar modalen vid klick
-                    - kallar på setShowingImage med klickad img.scr som parameter
-                    - kallar på setThumbs för att printa ut thumbnailsen
-                    - läser också in knapparna och kallar på rätt knappfunktion vid klick
-
-  setActiveThumbnail justerar stylingen för aktiv bild
-*/
-
-const gallery = document.querySelector("#galleryModal");
-const showingplace = document.querySelector("#showing-image");
-const images2 = document.querySelectorAll(".gallery-image");
-
-const images = [//våra bilder hårdkodade filnamn som objekt i array
-  {
-    imgName: "5-3.jpg"
-  },
-  {
-    imgName: "5-1.jpg"
-  },
-  {
-    imgName: "5-6.jpg"
-  },
-  {
-    imgName: "5-2.jpg"
-  },
-  {
-    imgName: "5-5.jpg"
-  },
-  {
-    imgName: "5-4.jpg"
-  },
-  {
-    imgName: "5-7.jpg"
-  },
-];
-
-//parametern är src som skickas med från onclicken nedan
-const setShowingImage = (src) => {
-  //the img element i the showingplace get the src that has been sent in to the function
-  showingplace.setAttribute("src", src)
-  //get the new active thumbnail
-  setActiveThumbnail();
-};
-
-/********************  TO DO!!!!!!! **********************/
-
- /* Här nedan vill jag att den läser i images2 som är inläst istället för hårdkodade, 
- känns lite b att ha två olika arrays med samma bilder ;) */
-
- /********************************************************/
-
- const setThumbs = () => {
-  document.querySelector("#thumbnails-wrapper").innerHTML = images
-  //map (typ som en loop) tar en funktion som argument, här en one line arrow func. Map tar en array, lägger till nånting och generar en ny array
-  //skicka med den klickade bildens src som argument i onclicken
-  .map((img) => `<img src="./media/img2/${img.imgName}" class="thumbnail" onclick="setShowingImage(this.src)">`)
-  //takes the array and put it back to a string without the ,
-  .join("");
-  //get the new active thumbnail
-  setActiveThumbnail();
-}
-
-//function for the active thumbnail
-const setActiveThumbnail = () => {
-  //lyft in alla bilder i klassen och lägg dem i en array
-  const thumbs = document.querySelectorAll(".thumbnail");
-  //loop för att kolla på varje elements src-attribut för att se om den överrensstämmer med  main-image src attribut = den som är aktiv
-  for (let i = 0; i < thumbs.length; i++) {
-    //if the img in thumbs[i] src attribute is the same as the showingplace src attribut
-    if (thumbs[i].src === showingplace.src){ 
-      //style without opacity
-      thumbs[i].style.opacity = "1";
-    } else {
-      //style with opacity
-      thumbs[i].style.opacity = "0.6";
-    }  
-  }
-};
-
-//function for previous picture btn
-const prevImage = () => {
-  //läser in alla våra bildelement igen
-  const thumbs = document.querySelectorAll(".thumbnail");
-  //loopa över för att se om aktiv thumbs och main är samma
-  for (let i = 0; i < thumbs.length; i++) {
-    //om bilden på thumbs[i] src attribut === main-image src attribut & i !== 0 (alltså den första bilden)
-    if (thumbs[i].src === showingplace.src && i !== 0){ 
-      //då vill vi sätta om vår main-image attribut ("src" till, thumbs[i-1].src) = alltså bilden innan
-      showingplace.setAttribute("src", thumbs[i-=1].src)
-      //get the new active thumbnail
-      setActiveThumbnail();
-    };
-  };
-};
-
-//function for next picture btn
-const nextImage = () => {
-  //läser in alla våra bildelement igen
-  const thumbs = document.querySelectorAll(".thumbnail");
-  //loopa över för att se om aktiv thumbs och main är samma
-  for (let i = 0; i < thumbs.length; i++) {
-    //om bilden på thumbs[i] src attribut === main-image src attribut & i !== 0 (alltså den sista bilden)
-    if (thumbs[i].src === showingplace.src && i !== thumbs.length - 1) { 
-      //då vill vi sätta om vår main-image attribut ("src" till, thumbs[i+=1].src) = alltså bilden efter
-      showingplace.setAttribute("src", thumbs[i+=1].src)
-      //get the new active thumbnail
-      setActiveThumbnail();
-    };
-  };
-};
-
-//function for opening the about modal
-const openGalleryModal = () => {
-  //get the images in the gallery, every image with the classname are collected in an array
-  const selImg = document.querySelectorAll(".gallery-image");
-  //iterate over every index in the img array
-  for (let i = 0; i < selImg.length; i++) {
-    //listen for clicks on the images
-    selImg[i].addEventListener("click", () => {
-      //when clicking, the modal shows up
-      gallery.style.display = "flex";
-      //call the functions that shows the gallery modal content with the clicked index position as a parameter
-      setShowingImage(selImg[i].src);
-      //call the thumbnail function
-      setThumbs();
-      
-    });
-  }
-    //läser in knapparna och vid klick ska det kallas på funktioner
-    document.querySelector("#prev-btn").addEventListener("click", prevImage);
-    document.querySelector("#next-btn").addEventListener("click", nextImage);
-};
-
-//function for hiding the modal
-const closeGalleryModal = () => {
-  //hide the modal-div
-  gallery.style.display = "none";
-}
-
-//when the window load, call the openGalleryModal function
-window.addEventListener("load", openGalleryModal);
