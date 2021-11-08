@@ -611,7 +611,7 @@ main {
 /******************* TO DO! *****************/
 
 /*  
-    
+    - Justera så alla thumbs syns i mobilny. Strular om skärmen är smal
 */
 
 /*******************************************/
@@ -654,17 +654,18 @@ main {
     display: flex;
     width: 100%;
     background-color: black;
+    height: auto;
 }
 .thumbnail {
-    width: 80px;
-    object-fit: cover;
+    width: 600px;
+    height: auto;
+    overflow: hidden;
     cursor: pointer;
-    flex-grow: 1;
 }
 #prev-btn, 
 #next-btn {
     position: absolute;
-        top: 45%;
+    top: 45%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -685,23 +686,12 @@ main {
 #next-btn{
         right: 10px;  
 }
-.modal-header {
-    display: flex;
-    justify-content: flex-end;
-    padding-right: 10px;
-    
-}
-.fa{
-    font-size: 25px;
-    
-}
 /*********** MEDIA QUERY FOR OPEN GALLERY start ************/
 @media screen and (max-width: 800px) {
     .galleryModal-wrapper{
-        width: 350px;
+        width: 400px;
         height: auto;
         display: flex;
-        
     }
         .image-wrapper{
             position: relative;
@@ -709,17 +699,16 @@ main {
             height: auto;
         }
         #thumbnails-wrapper {
-            display: flex;
+            height: auto;
             width: auto;
-            
+            overflow: hidden;
         }
         .thumbnail {
             display: flex;
             width: auto;
+            cursor: pointer;
             overflow: hidden;
-            
-            
-            
+        }    
 }
 /*********** MEDIA QUERY FOR OPEN GALLERY end ************/
 /*about- section*/
@@ -863,6 +852,9 @@ main {
     } 
     .card {
         margin-top: 20px;
+    }
+    .modal-wrapper {
+        margin: 25% auto;
     }
 }
 
