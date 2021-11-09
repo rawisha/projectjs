@@ -31,6 +31,8 @@ window.addEventListener("load", function () {
 });
 //MOBILE MENU END
 
+
+
 //OPEN SIGN START
 const openSign = () => {
   const time = new Date();
@@ -66,50 +68,24 @@ const openSign = () => {
 window.addEventListener("load", openSign);
 //OPEN SIGN END
 
-/*BACKUP GALLERY */
-/*
- OpenGalleryModal   - lyssnar på bildklick
-                    - öppnar modalen vid klick
-                    - kallar på setShowingImage med klickad img.scr som argument
-                    - kallar på setThumbs för att printa ut thumbnailsen
-                    - läser också in knapparna och kallar på rätt knappfunktion vid klick
 
-  setActiveThumbnail justerar stylingen för aktiv bild
-*/
+/********************  GALLERY STARTS HERE **********************/
 
 const gallery = document.querySelector("#galleryModal");
 const showingplace = document.querySelector("#showing-image");
 const images2 = document.querySelectorAll(".gallery-image");
-const images = [//våra bilder hårdkodade filnamn som objekt i array
-  {
-    imgName: "5-3.jpg"
-  },
-  {
-    imgName: "5-1.jpg"
-  },
-  {
-    imgName: "5-6.jpg"
-  },
-  {
-    imgName: "5-2.jpg"
-  },
-  {
-    imgName: "5-5.jpg"
-  },
-  {
-    imgName: "5-4.jpg"
-  },
-  {
-    imgName: "5-7.jpg"
-  },
-];
+const images = [];
+images2.forEach(pic => {
+  return images.push({url: pic.src})
+});
+
+
 
 
 
 /********************  TO DO GALLERY !!!!!!! **********************/
 
- /*   - I setThumbs vill jag att den läser i images2 som är inläst istället för hårdkodade, 
-        känns lite b att ha två olika arrays med samma bilder ;) 
+ /*   
       - Finlir på next/prev knappar och justera så de går varvet runt igen när första/sista bilden klickas
         Fixa då också kommentarerna på dessa funktioner
 */
@@ -151,11 +127,13 @@ const setShowingImage = (src) => {
   setActiveThumbnail();
 };
 
+
+
 //function for the thumbnails
 const setThumbs = () => {
   document.querySelector("#thumbnails-wrapper").innerHTML = images
   //map = take the "in-array", add something, ang get a new array
-  .map((img) => `<img src="./media/img2/${img.imgName}" class="thumbnail" onclick="setShowingImage(this.src)">`)
+  .map((img) => `<img src="${img.url}" class="thumbnail" onclick="setShowingImage(this.src)">`)
   //takes the array and put it back to a string without the ,
   .join("");
   //get the new active thumbnail
@@ -183,6 +161,9 @@ const setActiveThumbnail = () => {
 const prevImage = () => {
   //get the thumbnail images, every image with the classname are collected in an array
   const thumbs = document.querySelectorAll(".thumbnail");
+  const prevBtn = document.getElementById("prev-btn");
+  const nextBtn = document.querySelector(".next");
+  
   //loopa över för att se om aktiv thumbs och main är samma
   for (let i = 0; i < thumbs.length; i++) {
     //om bilden på thumbs[i] src attribut === main-image src attribut & i !== 0 (alltså ej den första bilden)
@@ -214,95 +195,11 @@ const nextImage = () => {
 //when the window load, call the openGalleryModal function
 window.addEventListener("load", openGalleryModal);
 
+/********************  GALLERY ENDS HERE **********************/
 
-/*
-//POPUP GALLERY START
-const gallery = document.querySelectorAll(".gallery-item .image"),
-  popUp = document.querySelector(".popUP"),
-  previewImg = popUp.querySelector("img[alt]"),
-  currentImg = popUp.querySelector(".current-img"),
-  totalImg = popUp.querySelector(".total-img"),
-  bgShadow = document.querySelector(".bgShadow"),
-  demoimg = popUp.querySelector(".demoimg");
-closeIcon = popUp.querySelector(".icon");
 
-window.onload = () => {
-  for (let i = 0; i < gallery.length; i++) {
-    totalImg.textContent = gallery.length;
+/********************  ABOUT MODAL START HERE **********************/
 
-    let thumbs = [gallery[i].querySelector("img").src];
-    thumbs.forEach((pics) => {
-      const thum = document.createElement("img");
-      thum.setAttribute("class", "thumbinfo");
-      thum.src = pics;
-      demoimg.appendChild(thum);
-    });
-    gallery[i].onclick = () => {
-      function preview() {
-        currentImg.textContent = i + 1;
-        let activeimg = gallery[i].querySelector("img").src;
-        previewImg.src = activeimg;
-        const thumbimgs = document.getElementsByClassName("thumbinfo");
-        const mainIMGsrc = document.getElementById("main-img").src;
-        for (let i = 0; i < thumbimgs.length; i++) {
-          if (thumbimgs[i].src === mainIMGsrc) {
-            thumbimgs[i].style.opacity = "1";
-          } else {
-            thumbimgs[i].style.opacity = ".6";
-          }
-        }
-      }
-
-      const prevBtn = document.querySelector(".prev");
-      const nextBtn = document.querySelector(".next");
-      if (i === 0) {
-        prevBtn.style.display = "none";
-      }
-      if (i >= gallery.length - 1) {
-        nextBtn.style.display = "none";
-      }
-      prevBtn.onclick = () => {
-        i--;
-        if (i === 0) {
-          preview();
-          prevBtn.style.display = "none";
-        } else {
-          preview();
-          nextBtn.style.display = "block";
-        }
-      };
-      nextBtn.onclick = () => {
-        i++;
-
-        if (i >= gallery.length - 1) {
-          preview();
-          nextBtn.style.display = "none";
-        } else {
-          preview();
-          prevBtn.style.display = "block";
-        }
-      };
-
-      preview();
-      popUp.classList.add("show");
-      bgShadow.style.display = "block";
-      document.querySelector("body").style.overflow = "hidden";
-
-      closeIcon.onclick = () => {
-        i;
-        prevBtn.style.display = "block";
-        nextBtn.style.display = "block";
-        bgShadow.style.display = "none";
-        popUp.classList.remove("show");
-        document.querySelector("body").style.overflow = "auto";
-      };
-    };
-  }
-};
-//POPUP GALLERY END
-*/
-
-//ABOUT MODAL START
 //get the modal
 const modal = document.querySelector("#aboutModal");
 //get all the profile images in the class
@@ -369,4 +266,5 @@ const closeAboutModal = () => {
 
 //when the window load, call the openAboutModal function
 window.addEventListener("load", openAboutModal);
-//ABOUT MODAL END
+
+/********************  ABOUT MODAL ENDS HERE **********************/
