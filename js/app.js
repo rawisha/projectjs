@@ -1,4 +1,5 @@
-//MOBILE MENU START
+/********************  MOBILE MENU STARTS HERE ********************/
+
 let menuOpen = false;
 const menuBtn = document.querySelector(".menu-btn");
 const menu = document.querySelector(".mobile-menu");
@@ -29,11 +30,45 @@ window.addEventListener("load", function () {
     });
   }
 });
-//MOBILE MENU END
+
+/********************  MOBILE MENU ENDS HERE ********************/
 
 
+/********************  DARK/LIGHT MODE STARTS HERE ********************/
 
-//OPEN SIGN START
+const landingBtn = document.querySelector("#landing-btn");
+const landingText = document.querySelector("#landing-text");
+let night = false;
+
+function nightMode() {
+  if (!night){
+    documentBody.style.backgroundColor = "rgb(33, 33, 33)";
+    documentBody.style.color = "white";
+    landingBtn.innerHTML = '<i class="far fa-lightbulb"></i>'; /*ÄNDRA TILL SOL IKON ELLER LIKNANDE!! */
+    landingText.innerHTML = "Växla till ljust läge";
+    night = true; 
+  }
+  else{
+    documentBody.style.backgroundColor = "white";
+    documentBody.style.color = "black";
+    landingBtn.innerHTML = '<i class="fas fa-lightbulb"></i>';
+    landingText.innerHTML = "Växla till mörkt läge";
+    night = false;
+  }
+}
+
+window.addEventListener("load", function(){//när sidan lästs in
+  landingBtn.addEventListener("click", function() {//börjar den lyssna efter klick
+     // nightMode();//vid klick, start nightMode function
+     nightMode();
+  });
+});
+
+/********************  DARK/LIGHT MODE ENDS HERE ********************/
+
+
+/********************  OPEN SIGN STARTS HERE ********************/
+
 const openSign = () => {
   const time = new Date();
   let getTime = time.getHours();
@@ -66,33 +101,28 @@ const openSign = () => {
 };
 
 window.addEventListener("load", openSign);
-//OPEN SIGN END
+
+/********************  OPEN SIGN ENDS HERE ********************/
 
 
-/********************  GALLERY STARTS HERE **********************/
+/********************  GALLERY STARTS HERE ********************/
 
+//gets the modal
 const gallery = document.querySelector("#galleryModal");
+//gets the main image space
 const showingplace = document.querySelector("#showing-image");
+//gets all the images in the gallery
 const images2 = document.querySelectorAll(".gallery-image");
-
+//declaration - empty array
 const images = [];
-//Loops over the images
+//loops over the images. Fills the array with objects
 images2.forEach(pic => {
   return images.push({url: pic.src})
 });
+//gets the prev and next button elements
+const prevBtn = document.getElementById("prev-btn");
+const nextBtn = document.getElementById("next-btn");
 
-
-
-
-
-/********************  TO DO GALLERY !!!!!!! **********************/
-
- /*   
-      - Finlir på next/prev knappar och justera så de går varvet runt igen när första/sista bilden klickas
-        Fixa då också kommentarerna på dessa funktioner
-*/
-
-/********************************************************/
 
 //function for opening the about modal
 const openGalleryModal = () => {
@@ -121,17 +151,13 @@ const closeGalleryModal = () => {
   gallery.style.display = "none";
 };
 
-//the parameter src is sent from the onclick in previous function (openGalleryModal or setThumbs)
+//function for the main image. the parameter src is sent from the onclick in previous function (openGalleryModal or setThumbs)
 const setShowingImage = (src) => {
   //the img element in the showingplace get the src that has been sent in to the function
   showingplace.setAttribute("src", src);
   //get the new active thumbnail
   setActiveThumbnail();
 };
-
-//Gets the prev and next button elements
-const prevBtn = document.getElementById("prev-btn");
-const nextBtn = document.getElementById("next-btn");
 
 //function for the thumbnails
 const setThumbs = () => {
@@ -148,9 +174,9 @@ const setThumbs = () => {
 const setActiveThumbnail = () => {
   //get the thumbnail images, every image with the classname are collected in an array
   const thumbs = document.querySelectorAll(".thumbnail");
-  //loop for checking of the src of the element is the same as the showingplace src = the active one
+  //loop for checking if the src of the element is the same as the showingplace src = the active one
   for (let i = 0; i < thumbs.length; i++) {
-    //if the img in thumbs[i] src attribute is the same as the showingplace src attribut
+    //if the img in thumbs[i] src attribute is the same as the showingplace src 
     if (thumbs[i].src === showingplace.src){ 
       //style without opacity
       thumbs[i].style.opacity = "1";
@@ -171,39 +197,42 @@ const setActiveThumbnail = () => {
   }
 };
 
-
 //function for previous picture btn
 const prevImage = () => {
   nextBtn.style.display = "block"
   //get the thumbnail images, every image with the classname are collected in an array
   const thumbs = document.querySelectorAll(".thumbnail");
-  //loopa över för att se om aktiv thumbs och main är samma
+  //loop for checking if the src of the element is the same as the showingplace src
   for (let i = 0; i < thumbs.length; i++) {
+    //if the image src on index is the same as showingplace src & i = 1 (=second img)
     if(thumbs[i].src === showingplace.src && i === 1){
+      //remove arrow button
       prevBtn.style.display = "none";
     }
-    //om bilden på thumbs[i] src attribut === main-image src attribut & i !== 0 (alltså ej den första bilden)
+    //if the image src on index is the same as showingplace src & i not 0 (=first img) 
     if (thumbs[i].src === showingplace.src && i !== 0){ 
-      //då vill vi sätta om vår main-image attribut ("src" till, thumbs[i-1].src) = alltså bilden innan
+      //set showingplace attribute to thumbs[i-1].src (=the picture before)
       showingplace.setAttribute("src", thumbs[i-=1].src);
-      //get the new active thumbnail
+      //get the new active thumbnail 
       setActiveThumbnail();
   }};
 };
 
-//function for next picture "btn"
+//function for next picture btn
 const nextImage = () => {
   prevBtn.style.display = "block"
   //get the thumbnailimages, every image with the classname are collected in an array
   const thumbs = document.querySelectorAll(".thumbnail");
-  //loopa över för att se om aktiv thumbs och main är samma
+  //loop for checking if the src of the element is the same as the showingplace src
   for (let i = 0; i < thumbs.length; i++) {
-    //om bilden på thumbs[i] src attribut === main-image src attribut & i !== 0 (alltså den sista bilden)
+    //if the image src on index is the same as showingplace src & i not array lenght -2 (=second last img)
     if(thumbs[i].src === showingplace.src && i === thumbs.length - 2){
+      //remove arrow button
       nextBtn.style.display = "none";
     }
+    //if the image src on index is the same as showingplace src & i not array lenght -1 (=last img)
     if (thumbs[i].src === showingplace.src && i !== thumbs.length - 1) { 
-      //då vill vi sätta om vår main-image attribut ("src" till, thumbs[i+=1].src) = alltså bilden efter
+      //set showingplace attribute to thumbs[i+=1].src (=the img after)
       showingplace.setAttribute("src", thumbs[i+=1].src);
       //get the new active thumbnail
       setActiveThumbnail();
