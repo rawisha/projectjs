@@ -5,173 +5,364 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title>Picasso Life</title>
+    <script src="https://kit.fontawesome.com/38e66b1324.js" crossorigin="anonymous"></script>
+    <title>FUNKY Art Gallery</title>
 </head>
+
 <body>
-    <!---header börjar här---->
+    <!--header start-->
     <header>
         <nav class="navbar">
-            <a href="index.html"><h1>Picasso <span>Life</span></h1></a>
+            <a href="index2.html"><h1><span>Funky</span> Art Gallery</h1></a>
             <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#gallery-wrapper">Gallery</a></li>
-                <li><a href="#">About us</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="#intro-section">Home</a></li>
+                <li><a href="#gallery-section">Gallery</a></li>
+                <li><a href="#about-section">About us</a></li>
+                <li><a href="#contact-section">Contact</a></li>
             </ul>
             <!--mobile navigation button start-->
             <div class="menu-btn">
-            <div class="menu-btn-burger"></div>
+                <div class="menu-btn-burger"></div>
             </div>
             <!--mobile navigation button end-->
         </nav>
     </header>
-    <!---header slutar här---->
+    <!--header end-->
+
     <!--mobile menu start-->
     <div class="mobile-menu">      
         <nav class="mobile-navbar">               
             <a class="mobile-link" href="#intro-section">Home</a>
-            <a class="mobile-link" href="#gallery-wrapper">Gallery</a>
+            <a class="mobile-link" href="#gallery-section">Gallery</a>
             <a class="mobile-link" href="#about-section">About us</a>                
             <a class="mobile-link" href="#contact-section">Contact</a>                       
         </nav>
     </div>
-
     <!--mobile menu end-->
-    <!--------------------DIVIDER------------------------>
 
-    <!---welcome sektion börjar  här---->
-    <section class="welcome">
-        <div class="overlay-text">
-            <h1>Welcome to <em>Picasso Life</em></h1>
-            <p>Lively arts to be EXPLORED!</p>
-        <div class="scrollicon">
-            <a class="scrollto">
-            <a href="#gallery-wrapper"><img src="./media/img/scroll-icon.png"></a>
-        </div>
-        </div>
-        <video autoplay="" loop="" muted>
-        	<source src="./media/vid/highway-loop.mp4" type="video/mp4" />
-            "Video not supported"
-        </video>
-    </section>
-    <!---welcome sektion slutar här---->
-    
-    <!--------------------DIVIDER------------------------>
-    
-    
-    <!---gallery sektion börjar här---->
-    <section class="gallery-wrapper"  id="gallery-wrapper">
-        <div class="gallery-container h-2">
-            <div class="gallery-item">
-                <div class="image">
-                    <img src="./media/img/thumb1.png" alt="./media/img/1.png">
+    <!--main start-->
+    <main>
+        <!--landing section start-->
+        <section class="landing-wrapper">
+            <div class="landing-image"><img src="./media/img/backgr.jpg"></div>
+            <div class="landing-overlay">
+                <h1><span>Funky</span> art gallery</h1>
+                <p>Lively arts to be EXPLORED!</p>
+            </div>
+        </section>
+        <!--landing section end-->
+
+        <!--anchor tag between sections-->
+        <div class="anchor" id="intro-section"></div>
+
+        <!--intro section start-->
+        <section class="section-wrapper intro-wrapper col-8">
+            <h2 class="intro-header">Welcome to <br>the <span>Funky</span> Art Gallery</h2>
+            <div class="intro col-10">
+                <div class="intro-left col-6"> 
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                        Doloribus id pariatur incidunt ut sit quibusdam deserunt 
+                        ducimus, quam ipsam tenetur reprehenderit libero distinctio 
+                        amet praesentium atque quia reiciendis, asperiores hic!</p>
+                    <div class="we-are-open col-10">
+                        <div id="js-open">Opening times</div>
+                        <table>
+                            <tr>
+                                <td>Monday</td>
+                                <td>10.00-18.00</td>
+                            </tr>
+                            <tr>
+                                <td>Tuesday</td>
+                                <td>10.00-18.00</td>
+                            </tr>
+                            <tr>
+                                <td>Wednesday</td>
+                                <td>10.00-18.00</td>
+                            </tr>
+                            <tr>
+                                <td>Thursday</td>
+                                <td>10.00-18.00</td>
+                            </tr>
+                            <tr>
+                                <td>Friday</td>
+                                <td>10.00-18.00</td>
+                            </tr>
+                            <tr>
+                                <td>Saturday</td>
+                                <td>12.00-16.00</td>
+                            </tr>
+                            <tr>
+                                <td>Sunday</td>
+                                <td>12.00-16.00</td>
+                            </tr>
+                        </table>
+                    </div>
                 </div>
-                    <div class="imgtext">
-                        <h1>Image <em>Title</em></h1>
-                        <p>RANDOM TEXT HERE</p>
+                <div class="intro-right col-5">
+                    <img src="media/img/intro-img.jpg">
+                </div>
+            </div>                
+        </section> 
+        <!--intro section end-->
+
+        <!--anchor tag between sections-->
+        <div class="anchor" id="gallery-section"></div>
+
+        <!--gallery section start-->
+        <section class="section-wrapper gallery-wrap col-8">
+            <h2>Gallery</h2>
+            <div class="gallery">
+                <div class="gallery-wrapper col-7"  id="gallery-wrapper">
+                    <div class="gallery-container h-2">
+                        <div class="gallery-item">
+                            <div class="image">
+                                    <img class="gallery-image" src="./media/img/5-3.jpg" alt="">
+                            </div>
+                        </div>
                     </div>
-            </div>
-        </div>
-        <div class="gallery-container">
-            <div class="gallery-item">
-                <div class="image">
-                    <img src="./media/img/thumb2.png" alt="./media/img/2.png"></div>
-                    <div class="imgtext">
-                        <h1>Image <em>Title</em></h1>
-                        <p>RANDOM TEXT HERE</p>
+                    <div class="gallery-container">
+                        <div class="gallery-item">
+                            <div class="image">
+                                <img class="gallery-image" src="./media/img/5-1.jpg" alt="">
+                            </div>
+                        </div>
                     </div>
-            </div>
-        </div>
-        <div class="gallery-container">
-            <div class="gallery-item">
-                <div class="image">
-                    <img src="./media/img/thumb3.png" alt="./media/img/3.png"></div>
-                    <div class="imgtext">
-                        <h1>Image <em>Title</em></h1>
-                        <p>RANDOM TEXT HERE</p></div>
-            </div>
-        </div>
-        <div class="gallery-container">
-            <div class="gallery-item">
-                <div class="image">
-                    <img src="./media/img/7.png" alt="./media/img/7.png"></div>
-                    <div class="imgtext">
-                        <h1>Image <em>Title</em></h1>
-                        <p>RANDOM TEXT HERE</p></div>
-            </div>
-        </div>
-        <div class="gallery-container">
-            <div class="gallery-item">
-                <div class="image">
-                    <img src="./media/img/thumb5.png" alt="./media/img/5.png"></div>
-                    <div class="imgtext">
-                        <h1>Image <em>Title</em></h1>
-                        <p>RANDOM TEXT HERE</p>
-                        <p></p>
+                    <div class="gallery-container">
+                        <div class="gallery-item">
+                            <div class="image">
+                                <img class="gallery-image" src="./media/img/5-6.jpg" alt="">
+                            </div>
+                        </div>
                     </div>
-                    
+                    <div class="gallery-container">
+                        <div class="gallery-item">
+                            <div class="image">
+                                <img class="gallery-image" src="./media/img/5-2.jpg" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gallery-container">
+                        <div class="gallery-item">
+                            <div class="image">
+                                <img class="gallery-image" src="./media/img/5-5.jpg" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gallery-container">
+                        <div class="gallery-item">
+                            <div class="image">
+                                <img class="gallery-image" src="./media/img/5-4.jpg" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gallery-container w-2" >
+                        <div class="gallery-item">
+                            <div class="image">
+                                <img class="gallery-image" src="./media/img/5-7.jpg" alt="">
+                            </div>
+                        </div>
+                    </div>                
+                </div>
+                <div class="gallery-info col-4">
+                    <h3>[photographer's name]</h3>
+                    <p>Some random information about the photografer and the collection. 
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                        Suscipit, quia fugit. Distinctio placeat quaerat quam 
+                        doloremque rerum quasi sed dicta provident praesentium iure, 
+                        fugit ducimus nobis illum id minima maxime?</p>
+                </div>
+            </div>   
+            <hr class="dotted-line col-11">
+            <div class="gallery-reverse">
+                <div class="gallery-wrapper col-7"  id="gallery-wrapper">
+                    <div class="gallery-container h-2">
+                        <div class="gallery-item">
+                            <div class="image">
+                                <img src="./media/img/2-1.jpg" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gallery-container">
+                        <div class="gallery-item">
+                            <div class="image">
+                                <img src="./media/img/2-7.jpg" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gallery-container">
+                        <div class="gallery-item">
+                            <div class="image">
+                                <img src="./media/img/2-5.jpg" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gallery-container">
+                        <div class="gallery-item">
+                            <div class="image">
+                                <img src="./media/img/2-6.jpg" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gallery-container">
+                        <div class="gallery-item">
+                            <div class="image">
+                                <img src="./media/img/2-4.jpg" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gallery-container">
+                        <div class="gallery-item">
+                            <div class="image">
+                                <img src="./media/img/2-3.jpg" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gallery-container w-2" >
+                        <div class="gallery-item">
+                            <div class="image">
+                                <img src="./media/img/2-2.jpg" alt="">
+                            </div>
+                        </div>
+                    </div>               
+                </div>
+                <div class="gallery-info-reverse col-4">
+                    <h3>[photographer's name]</h3>
+                    <p>Some random information about the photografer and the collection.
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                        Suscipit, quia fugit. Distinctio placeat quaerat quam 
+                        doloremque rerum quasi sed dicta provident praesentium iure, 
+                        fugit ducimus nobis illum id minima maxime?</p>
+                </div>
+            </div>
+        </section>
+        <!--gallery section end-->
+
+        <!--GALLERY MODAL START-->
+        <section id="galleryModal">
+            <div class="galleryModal-wrapper"><!--#images-section-->
+                <div class="modal-header">
+                    <span onclick="closeGalleryModal()" class="closingIcon fa fa-close"></span>
+                </div>
+               
+                    <div class="image-wrapper"><!--.main-image-wrapper-->
+                        <img id="showing-image" src="" alt=""><!--#main-image-->
+                        <span id="prev-btn"><i class="fa fa-arrow-left"></i></span>
+                        <span id="next-btn"><i class="fa fa-arrow-right"></i></span>
+                    </div>
+                    <div id="thumbnails-wrapper">
+
+                    </div>
+                
+            </div>
+        </section>
+        <!--GALLERY MODAL END-->
+
+        
+        <!--anchor tag between sections-->
+        <div class="anchor" id="about-section">
+        </div>
+
+        <!--about section start-->
+        <section class="section-wrapper about-wrapper col-8">
+            <h2>ABOUT US</h2>
+            <div class="card-wrapper col-10">
+                <div class="card col-3">
+                    <img class="profile-img" src="./media/img/prof-4.jpg" alt="">
+                    <h3>Firstname Lastname</h3>
+                    <p>Photographer</p>
+                    <button class="about-btn">More info</button>
+                </div>
+                <div class="card col-3">
+                    <img class="profile-img" src="./media/img/prof-2b.png" alt="">
+                    <h3>Firstname Lastname</h3>
+                    <p>Photographer</p>
+                    <button class="about-btn">More info</button>
+                </div>
+                <div class="card col-3">
+                    <img class="profile-img" src="./media/img/prof-5.png" alt="">
+                    <h3>Firstname Lastname</h3>
+                    <p>Photographer</p>
+                    <button class="about-btn">More info</button>
+                </div>
+            </div>                
+        </section>
+        <!--about section end-->
+
+        <!--about modal start-->
+        <div id="aboutModal" class="aboutModal">
+            <div class="modal-wrapper">
+                <div class="modal-header">
+                    <span onclick="closeAboutModal()" class="closingIcon fa fa-close"></span>
+                </div>
+                <div class="modal-content">
+                    <div class="img-b col-6">
+                        <img id="profImg" src="" alt="">
+                    </div>
+                    <div class="text-box col-6">
+                        <h2 id="position"></h2>
+                        <p>Name: <span id="name"></span></p>
+                        <p>Age: <span id="age"></span></p>
+                        <p>Facts: <span id="fact"></span></p>
+                        <p>Contact: <span id="contact"></span></p>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="gallery-container">
-            <div class="gallery-item">
-                <div class="image">
-                    <img src="./media/img/thumb6.png" alt="./media/img/6.png"></div>
-                    <div class="imgtext">
-                        <h1>Image <em>Title</em></h1>
-                        <p>RANDOM TEXT HERE</p></div>
+        <!--about modal end-->
+
+
+    </main>
+    <!--main end-->
+
+    <!--footer anchor-->
+    <div class="footer-anchor" id="contact-section"></div>
+
+    <!--footer start-->
+    <footer class="col-12">
+    <div class="footer-wrapper">
+        <div class="social-media-wrapper">
+            <h2>HEY!</h2>
+            <p>Don´t forget to check out our social media</p>
+            <div class="social-media-icons">
+                <a class="tooltip" href="">
+                    <i class="fab fa-instagram">
+                        <span class="tooltiptext">Instagram</span>
+                    </i>
+                </a>
+                <a class="tooltip" href="">
+                    <i class="fab fa-facebook">
+                        <span class="tooltiptext">Facebook</span>
+                    </i>
+                </a>
+                <a class="tooltip" href="">
+                    <i class="fab fa-pinterest">
+                        <span class="tooltiptext">Pinterest</span>
+                    </i>
+                </a>
             </div>
         </div>
-        <div class="gallery-container w-2" >
-            <div class="gallery-item">
-                <div class="image">
-                    <img src="./media/img/thumb4.png" alt="./media/img/4.png"></div>
-                    <div class="imgtext">
-                        <h1>Image <em>Title</em></h1>
-                        <p>RANDOM TEXT HERE</p></div>
-            </div>
+        <div class="contact-wrapper">
+            <p>Otherwise you can use more traditional ways to contact us</p>
+            <a class="tooltip" href="tel:+46700112233">
+                <i class="fas fa-phone">
+                    <span class="tooltiptext">Call!</span>
+                </i>
+            </a>
+            <a class="tooltip" href="mailto:exempel@epost.se">
+                <i class="far fa-envelope">
+                    <span class="tooltiptext">Write!</span>
+                </i>
+            </a>
+            <a class="tooltip" href="https://www.google.se/maps/@57.7861815,12.2986446,14z">
+                <i class="far fa-map">
+                    <span class="tooltiptext">Visit!</span>
+                </i>
+            </a>
         </div>
-        <!---div för popup bild börjar här---->
-
-        <!---div för popup bild slutar här---->
-    </section>
-    <!---gallery sektion slutar här---->
-    <div class="popUP">
-        <div class="detailText">
-            <span class="title">
-              Bild <p class="current-img"></p>
-              av <p class="total-img"></p>
-            </span>
-            <span class="icon fa fa-close"></span>
-        </div>
-        <div class="img-box">
-            <div class="slide prev">
-                <i class="fa fa-arrow-left"></i>
-            </div>
-            <div class="slide next">
-                <i class="fa fa-arrow-right"></i>
-            </div>
-            <img src="" alt="" id="main-img">
-        </div>
-        <div class="demoimg">
-            
-        </div>
-    </div>
-    <div class="bgShadow"></div>
-    <!--------------------DIVIDER------------------------>
-    
-    
-
-
-    <!---OM OSS sektion börjar här---->
-    <section class="aboutUs">
-    </section>
-    <!---OM OSS sektion slutar här---->
-
-
+    </footer>
+    <!--footer end-->
 
     <!---javascript link här---->
     <script src="./js/app.js"></script>
 </body>
-
 </html>
