@@ -21,13 +21,9 @@ const toggleMenu = () => {
 }
 
 window.addEventListener("load", function () {
-  menuBtn.addEventListener("click", function () {
-    toggleMenu();
-  });
+  menuBtn.addEventListener("click", toggleMenu);
   for (let i = 0; i < links.length; i++) {
-    links[i].addEventListener("click", function () {
-      toggleMenu();
-    });
+    links[i].addEventListener("click", toggleMenu);
   }
 });
 
@@ -38,45 +34,54 @@ window.addEventListener("load", function () {
 
 const landingBtn = document.querySelector("#landing-btn");
 const landingText = document.querySelector("#landing-text");
-let night = false;
+let dark = false;
 
 function nightMode() {
-  if (!night){
+  //if the "dark" is false, (=the window is white)
+  if (!dark){
+    //some dark styling
     documentBody.style.backgroundColor = "rgb(33, 33, 33)";
     documentBody.style.color = "white";
-    landingBtn.innerHTML = '<i class="far fa-lightbulb"></i>'; /*ÄNDRA TILL SOL IKON ELLER LIKNANDE!! */
+    landingBtn.innerHTML = '<i class="far fa-lightbulb"></i>';
     landingText.innerHTML = "Växla till ljust läge";
-    night = true; 
-  }
-  else{
+    //and "dark" is true (=window is dark)
+    dark = true; 
+    //else (=the window is dark)
+  } else {
+    //some light styling
     documentBody.style.backgroundColor = "white";
     documentBody.style.color = "black";
     landingBtn.innerHTML = '<i class="fas fa-lightbulb"></i>';
     landingText.innerHTML = "Växla till mörkt läge";
-    night = false;
+    //and "dark" is false (=window is white)
+    dark = false;
   }
 }
 
-window.addEventListener("load", function(){//när sidan lästs in
-  landingBtn.addEventListener("click", function() {//börjar den lyssna efter klick
-     // nightMode();//vid klick, start nightMode function
-     nightMode();
-  });
+window.addEventListener("load", function(){
+  //starts listening for clicks on the dark/light button. On click, start nightMode function
+  landingBtn.addEventListener("click", nightMode)
 });
+
 
 /********************  DARK/LIGHT MODE ENDS HERE ********************/
 
 
 /********************  OPEN SIGN STARTS HERE ********************/
 
+//function for showing if the gallery is open or closed
 const openSign = () => {
+  //delaration of a new date const
   const time = new Date();
+  //get the time right now
   let getTime = time.getHours();
+  //delaration of a new date const
   const day = new Date();
+  //get the day of the week
   let getDay = day.getDay();
 
   //for testing different times, that´s why using let
-  //getTime = 12;
+  //getTime = 10;
   //getDay = 0;
 
   //if = opening times for weekdays
@@ -100,6 +105,7 @@ const openSign = () => {
   };
 };
 
+//when the window loads, start openSign function
 window.addEventListener("load", openSign);
 
 /********************  OPEN SIGN ENDS HERE ********************/
@@ -115,7 +121,7 @@ const showingplace = document.querySelector("#showing-image");
 const images2 = document.querySelectorAll(".gallery-image");
 //declaration - empty array
 const images = [];
-//loops over the images. Fills the array with objects
+//loops over the images. Fills the array with images as objects
 images2.forEach(pic => {
   return images.push({url: pic.src})
 });
@@ -182,16 +188,24 @@ const setActiveThumbnail = () => {
       thumbs[i].style.opacity = "1";
     } else {
       //style with opacity
-      thumbs[i].style.opacity = "0.8";
+      thumbs[i].style.opacity = "0.5";
     }
+    //if the image src on index is the same as showingplace src & i = 0 (=first img)
     if(thumbs[i].src === showingplace.src && i === 0){
+      //hide button
       prevBtn.style.display = "none";
+      //if the image src on index is the same as showingplace src & i isn´t 0 (=not first img)
     }else if(thumbs[i].src === showingplace.src && i !== 0){
+      //show button
       prevBtn.style.display = "block";
     }
+    //if the image src on index is the same as showingplace src & i is array lenght -1 (=last img)
     if(thumbs[i].src === showingplace.src && i === thumbs.length - 1){
+      //hide button
       nextBtn.style.display = "none";
+      //if the image src on index is the same as showingplace src & i isn´t array lenght -1 (=not last img)
     }else if(thumbs[i].src === showingplace.src && i !== thumbs.length - 1){
+      //show button
       nextBtn.style.display = "block";
     }    
   }
@@ -199,6 +213,7 @@ const setActiveThumbnail = () => {
 
 //function for previous picture btn
 const prevImage = () => {
+  //button is displayed
   nextBtn.style.display = "block"
   //get the thumbnail images, every image with the classname are collected in an array
   const thumbs = document.querySelectorAll(".thumbnail");
@@ -220,17 +235,18 @@ const prevImage = () => {
 
 //function for next picture btn
 const nextImage = () => {
+  //button is displayed
   prevBtn.style.display = "block"
   //get the thumbnailimages, every image with the classname are collected in an array
   const thumbs = document.querySelectorAll(".thumbnail");
   //loop for checking if the src of the element is the same as the showingplace src
   for (let i = 0; i < thumbs.length; i++) {
-    //if the image src on index is the same as showingplace src & i not array lenght -2 (=second last img)
+    //if the image src on index is the same as showingplace src & i isn´t array lenght -2 (=second last img)
     if(thumbs[i].src === showingplace.src && i === thumbs.length - 2){
       //remove arrow button
       nextBtn.style.display = "none";
     }
-    //if the image src on index is the same as showingplace src & i not array lenght -1 (=last img)
+    //if the image src on index is the same as showingplace src & i isn´t array lenght -1 (=last img)
     if (thumbs[i].src === showingplace.src && i !== thumbs.length - 1) { 
       //set showingplace attribute to thumbs[i+=1].src (=the img after)
       showingplace.setAttribute("src", thumbs[i+=1].src);
@@ -283,7 +299,7 @@ const staff = [
 const showStaff = (valueOne) => {
   //for every infoType in the staff const at the sent in index
   for(const infoType in staff[valueOne]) {
-    //print out at right position in html with # + infotype. The info that should be printet out comes from const staff[inparameter index][infotype]
+    //print out at right position in html with # + infotype (infotype = position, name, age osv..). The info that should be printet out comes from const staff[inparameter index][infotype]
     document.querySelector("#"+infoType).innerHTML = staff[valueOne][infoType];
     }
     //for printing out images. the profileimg.src (=the place in html) should be the getimg[inparameter index].src (from the picture array, selected by class earlier)
