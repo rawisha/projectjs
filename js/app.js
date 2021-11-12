@@ -157,6 +157,12 @@ const closeGalleryModal = () => {
   gallery.style.display = "none";
 };
 
+window.addEventListener("click", (event) => {
+  if (event.target.id === "galleryModal") {
+    closeGalleryModal();
+  }
+});
+
 //function for the main image. the parameter src is sent from the onclick in previous function (openGalleryModal or setThumbs)
 const setShowingImage = (src) => {
   //the img element in the showingplace get the src that has been sent in to the function
@@ -327,7 +333,11 @@ const closeAboutModal = () => {
   //hide the modal-div
   modal.style.display = "none";
 }
-
+window.addEventListener("click", (event) => {
+  if (event.target.id === "aboutModal") {
+    closeAboutModal();
+  }
+});
 //when the window load, call the openAboutModal function
 window.addEventListener("load", openAboutModal);
 
