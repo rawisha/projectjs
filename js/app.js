@@ -338,7 +338,7 @@ window.addEventListener("click", (event) => {
     closeAboutModal();
   }
 });
-//when the window load, call the openAboutModal function
+//when the window load, call the openAboutModal functions
 window.addEventListener("load", openAboutModal);
 
 /********************  ABOUT MODAL ENDS HERE **********************/
