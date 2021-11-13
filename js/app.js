@@ -190,6 +190,7 @@ const setActiveThumbnail = () => {
   for (let i = 0; i < thumbs.length; i++) {
     //if the img in thumbs[i] src attribute is the same as the showingplace src 
     if (thumbs[i].src === showingplace.src){ 
+      //instead of a border we used opacity to mark active thumbnail
       //style without opacity
       thumbs[i].style.opacity = "1";
     } else {
@@ -333,8 +334,11 @@ const closeAboutModal = () => {
   //hide the modal-div
   modal.style.display = "none";
 }
+//listen for clicks outside the modal
 window.addEventListener("click", (event) => {
+  //if the id of the target (the element that triggered the event) is "aboutModal"
   if (event.target.id === "aboutModal") {
+    //call the closing function
     closeAboutModal();
   }
 });

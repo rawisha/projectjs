@@ -54,6 +54,10 @@ main {
     .color-border {
         height: 50px;
     }
+    .section-wrapper h2,
+    .intro-header{
+        font-size: 40px;
+    }
 }  
 
 /*********** HEADER/NAVBAR ***********/
@@ -126,6 +130,9 @@ main {
 @media screen and (max-width:800px) {
     .navbar ul{
         display: none;
+    }
+    .navbar a h1 {
+        font-size: 25px;
     }
     .menu-btn {
         position: relative;
@@ -295,6 +302,12 @@ main {
 }
 
 @media screen and (max-width:800px) {
+    .landing-overlay h1 {
+        font-size: 50px;
+    }
+    .landing-overlay p {
+        font-size: 18px;
+    }
     .landing-btn-wrapper:hover span{
         display: none;
     }
@@ -732,7 +745,7 @@ main {
     color: white;
     font-family: Arial, Helvetica, sans-serif;
     line-height: 1.5em;
-    padding: 40px 0 40px 30px;
+    padding: 70px 50px 40px 0px;
 }
 .footer-wrapper a{
     color: white;
